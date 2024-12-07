@@ -17,19 +17,19 @@ A responsive web application built with Node.js, Express, and EJS, enabling user
 - **Environment Configuration**: dotenv
 
 ## How to Run
-1. Clone the repository:
-git clone https://github.com/your-username/event-manager.git
+1. Clone the repository:  
+   `git clone https://github.com/your-username/event-manager.git`
 
-2. Install dependencies:
-npm i express ejs mariadb dotenv
+2. Install dependencies:  
+   `npm i express ejs mariadb dotenv`
 
-3. Set up your .env file with the following variables:
-DB_HOST=your-database-host
-DB_USER=your-database-user
-DB_PASSWORD=your-database-password
-DB_NAME=your-database-name
+3. Set up your .env file with the following variables:  
+   `DB_HOST=your-database-host`  
+   `DB_USER=your-database-user`  
+   `DB_PASSWORD=your-database-password`  
+   `DB_NAME=your-database-name`
 
-4. Start the server:
-npx nodemon or node app.js
+4. Start the server:  
+   `npx nodemon` or `node app.js`
 
-5. Open your browser and navigate to http://localhost:3000
+5. Open your browser and navigate to `http://localhost:3000`
