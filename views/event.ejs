@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Manager</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="shortcut icon" href="/images/christmas-stocking.png" type="image/x-icon">
+    <script src="/scripts/script.js"></script>
+</head>
+
+<body>
+    <a href="/">
+        <img src="/images/christmas-stocking.png">
+    </a>
+    <h1>Event Submitted</h1>
+    <hr>
+    <p>Event title: <%= data.einput %></p>
+    <p>Event description: <%= data.etext %></p>
+    <p>Event date: <%= data.etime %></p>
+    
+    <div id="all-events">
+        <a href="/all-events">View all events</a>
+    </div>
+</body>
+
+</html>

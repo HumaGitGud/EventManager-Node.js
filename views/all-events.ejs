@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Manager</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="shortcut icon" href="/images/christmas-stocking.png" type="image/x-icon">
+    <script src="/scripts/script.js"></script>
+</head>
+
+<body>
+    <a href="/">
+        <img src="/images/christmas-stocking.png">
+    </a>
+    <h1>All events:</h1>
+    <ul>
+        <% data.forEach(event => { %>
+            <li>
+                <strong>Event title: <%= event.title %></strong>
+                <p>Event description: <%= event.description %></p>
+                <p>Event date: <%= event.event_date %></p>
+            
+                <% if (!event.is_completed) { %>
+                    <form action="/all-events/<%= event.id %>/complete" method="POST">
+                        <button type="submit">Mark as Finished</button>
+                    </form>
+                <% } else { %>
+                    <p>Event: Finished</p>
+                <% } %>
+                    
+                <% if (!event.is_completed) { %>
+                    <form action="/all-events/<%= event.id %>/delete" method="POST">
+                    <button type="submit">Cancel Event</button>
+                    </form>
+                <% } %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+
+</html>
