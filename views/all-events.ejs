@@ -7,42 +7,31 @@
     <title>Event Manager</title>
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="shortcut icon" href="/images/christmas-pic1.png" type="image/x-icon">
-    <script src="/scripts/script.js"></script>
-    <script src="/scripts/countdown.js"></script>
+    <script src="/scripts/countdown.js" defer></script>
 </head>
 
 <body>
     <a href="/">
         <img src="/images/christmas-pic1.png">
     </a>
-    <h1>All events:</h1>
+    <h1>Event Manager</h1>
+    <hr>
+
+    <h3>All events:</h3>
     <ul>
         <% data.forEach(event => { %>
             <li>
                 <strong>Event title: <%= event.title %></strong>
-                <% if (upcomingEvent) { %>
-                    <div id="countdown" data-event-date="<%= upcomingEvent.event_date %>">
-                        <p>Starts in: <%= upcomingEvent.title %></p>
-                        <p id="countdown-timer"></p>
-                    </div>
-                <% } %>
+                <div class="countdown" data-event-id="<%= event.id %>" data-event-date="<%= event.event_date %>">
+                    <p>Starts in: <span class="countdown-timer"></span></p>
+                </div>
                 
                 <p>Event description: <%= event.description %></p>
                 <p>Event date: <%= event.event_date %></p>
-            
-                <% if (!event.is_completed) { %>
-                    <form action="/all-events/<%= event.id %>/complete" method="POST">
-                        <button type="submit">Mark as Finished</button>
-                    </form>
-                <% } else { %>
-                    <p>Event: Finished</p>
-                <% } %>
-                    
-                <% if (!event.is_completed) { %>
-                    <form action="/all-events/<%= event.id %>/delete" method="POST">
-                    <button type="submit">Cancel Event</button>
-                    </form>
-                <% } %>
+                
+                <form action="/all-events/<%= event.id %>/delete" method="POST">
+                    <button type="submit">Delete Event</button>
+                </form>
             </li>
         <% }); %>
     </ul>

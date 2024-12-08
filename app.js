@@ -37,19 +37,12 @@ app.post('/event', async (req, res) => {
     const data = req.body;
     
     let isValid = true;
-    if (data.einput.trim() === '') {
-        isValid = false;
-    }
-    if (data.etext.trim() === '') {
-        isValid = false;
-    }
-    if (data.etime.trim() === '') {
-        isValid = false;
-    } else {
+    if (data.einput.trim() === '') isValid = false;
+    if (data.etext.trim() === '') isValid = false;
+    if (data.etime.trim() === '') isValid = false;
+    else {
         const datetimeRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/; // (YYYY-MM-DDTHH:MM) format
-        if (!datetimeRegex.test(data.etime)) {
-            isValid = false;
-        }
+        if (!datetimeRegex.test(data.etime)) isValid = false;
     }
     if (!isValid) {
         res.render('home', {data: data});
@@ -59,7 +52,7 @@ app.post('/event', async (req, res) => {
     // Try to run SQL queries, otherwise throw an error
     try {
         const conn = await connect();
-        await conn.query('INSERT INTO events (title, description, event_date) VALUES (?, ?, ?);', [data.einput, data.etext, data.etime]);
+        await conn.query('INSERT INTO events (title, description, event_date, is_completed) VALUES (?, ?, ?, ?);', [data.einput, data.etext, data.etime, false]);
     } catch (error) {
         console.error('Error inserting event:', error);
         res.status(500).send('Error saving event.');
@@ -72,17 +65,7 @@ app.post('/event', async (req, res) => {
 app.get('/all-events', async (req, res) => {
     const conn = await connect();
     const rows = await conn.query('SELECT * FROM events ORDER BY event_date ASC;');
-    const upcomingEvent = rows[0]; // Top upcoming event
-    res.render('all-events', {data: rows, upcomingEvent: upcomingEvent});
-});
-
-// Update event status: Finish event
-app.post('/all-events/:id/complete', async (req, res) => {
-    const {id} = req.params;
-    const conn = await connect();
-    await conn.query('UPDATE events SET is_completed = ? WHERE id = ?', [true, id]);
-    conn.end();
-    res.redirect('/all-events');
+    res.render('all-events', {data: rows});
 });
 
 // Update event status: Delete event
@@ -92,6 +75,15 @@ app.post('/all-events/:id/delete', async (req, res) => {
     await conn.query('DELETE FROM events WHERE id = ?', [id]);
     conn.end();
     res.redirect('/all-events');
+});
+
+// Update event status: Finish event (mark as boolean=1)
+app.post('/update-expired-events', async (req, res) => {
+    const conn = await connect();
+    const now = new Date();
+    await conn.query('UPDATE events SET is_completed = true WHERE event_date < ?', [now]);
+    conn.end();
+    res.send('Expired events updated.');
 });
 
 // Listen to req, res and console log the server port

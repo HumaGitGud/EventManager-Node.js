@@ -8,16 +8,18 @@
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/animation.css">
     <link rel="shortcut icon" href="/images/christmas-pic1.png" type="image/x-icon">
-    <script src="/scripts/script.js"></script>
-    <script src="/scripts/animation.js"></script>
+    <script src="/scripts/script.js" defer></script>
+    <script src="/scripts/animation.js" defer></script>
 </head>
 
 <body>
     <a href="/">
         <img src="/images/christmas-pic1.png">
     </a>
-    <h1>Event Submitted</h1>
+    <h1>Event Manager</h1>
     <hr>
+
+    <h3>Event Submitted</h3>
     <p>Event title: <%= data.einput %></p>
     <p>Event description: <%= data.etext %></p>
     <p>Event date: <%= data.etime %></p>
