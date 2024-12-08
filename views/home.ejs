@@ -6,21 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Manager</title>
     <link rel="stylesheet" href="/styles/style.css">
-    <link rel="shortcut icon" href="/images/christmas-stocking.png" type="image/x-icon">
-    <!-- <script src="/scripts/script.js" defer></script> -->
+    <link rel="shortcut icon" href="/images/christmas-pic1.png" type="image/x-icon">
+    <script src="/scripts/script.js" defer></script>
 </head>
 
 <body>
     <a href="/">
-        <img src="/images/christmas-stocking.png">
+        <img src="/images/christmas-pic1.png">
     </a>
     <h1>Event Manager</h1>
     <hr>
 
     <form id="form" method="POST" action="event">
         <input type="text" id="einput" name="einput" placeholder="Event name"/>
+        <div id="einput-error" class="error-message"></div>
         <textarea id="etext" name="etext" placeholder="Event description"></textarea>
+        <div id="etext-error" class="error-message"></div>
         <input type="datetime-local" id="etime" name="etime"/>
+        <div id="etime-error" class="error-message"></div>
         <button>Submit</button>
     </form>
     <hr>
@@ -29,7 +32,6 @@
         <a href="/all-events">View all events</a>
     </div>
 
-    <div id="animation-container"></div>
 </body>
 
 </html>

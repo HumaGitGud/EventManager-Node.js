@@ -1,13 +1,13 @@
-document.getElementById('form').addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent form submission for demo purposes
+// This script performs an animation after "submit" button is clicked
+
+document.addEventListener('DOMContentLoaded', (event) => {
     
     const container = document.getElementById('animation-container');
 
     // Add multiple toys
     for (let i = 0; i < 40; i++) {
         const toy = document.createElement('img');
-        // toy.src = '/images/christmas-stocking' + (i % 3 + 1) + '.png'; // Example toy images
-        toy.src = '/images/christmas-stocking.png';
+        toy.src = '/images/christmas-pic' + (i % 12 + 1) + '.png';
 
         toy.className = 'toy';
 
@@ -21,7 +21,4 @@ document.getElementById('form').addEventListener('submit', (event) => {
         // Remove the toy after animation ends
         setTimeout(() => toy.remove(), 3000);
     }
-
-    // Uncomment the line below to allow form submission after the animation
-    event.target.submit();
 });

@@ -6,19 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Manager</title>
     <link rel="stylesheet" href="/styles/style.css">
-    <link rel="shortcut icon" href="/images/christmas-stocking.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/christmas-pic1.png" type="image/x-icon">
     <script src="/scripts/script.js"></script>
+    <script src="/scripts/countdown.js"></script>
 </head>
 
 <body>
     <a href="/">
-        <img src="/images/christmas-stocking.png">
+        <img src="/images/christmas-pic1.png">
     </a>
     <h1>All events:</h1>
     <ul>
         <% data.forEach(event => { %>
             <li>
                 <strong>Event title: <%= event.title %></strong>
+                <% if (upcomingEvent) { %>
+                    <div id="countdown" data-event-date="<%= upcomingEvent.event_date %>">
+                        <p>Starts in: <%= upcomingEvent.title %></p>
+                        <p id="countdown-timer"></p>
+                    </div>
+                <% } %>
+                
                 <p>Event description: <%= event.description %></p>
                 <p>Event date: <%= event.event_date %></p>
             

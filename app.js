@@ -26,13 +26,13 @@ async function connect() {
     }
 }
 
-// Endpoint 1: Home page, submit an event
+// Home page - submit an event
 app.get('/', (req, res) => {
     console.log("Hello server!")
     res.render('home', {data: {}});
 });
 
-// Endpoint 2: View event page
+// View event page after submission
 app.post('/event', async (req, res) => {
     const data = req.body;
     
@@ -45,12 +45,18 @@ app.post('/event', async (req, res) => {
     }
     if (data.etime.trim() === '') {
         isValid = false;
+    } else {
+        const datetimeRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/; // (YYYY-MM-DDTHH:MM) format
+        if (!datetimeRegex.test(data.etime)) {
+            isValid = false;
+        }
     }
     if (!isValid) {
         res.render('home', {data: data});
         return;
     }
 
+    // Try to run SQL queries, otherwise throw an error
     try {
         const conn = await connect();
         await conn.query('INSERT INTO events (title, description, event_date) VALUES (?, ?, ?);', [data.einput, data.etext, data.etime]);
@@ -60,13 +66,14 @@ app.post('/event', async (req, res) => {
     }
 
     res.render('event', {data: data});
-});
+})
 
-// Endpoint 3: View all upcoming events page
+// View all events page
 app.get('/all-events', async (req, res) => {
     const conn = await connect();
-    const rows = await conn.query('SELECT * FROM events;');
-    res.render('all-events', {data: rows});
+    const rows = await conn.query('SELECT * FROM events ORDER BY event_date ASC;');
+    const upcomingEvent = rows[0]; // Top upcoming event
+    res.render('all-events', {data: rows, upcomingEvent: upcomingEvent});
 });
 
 // Update event status: Finish event
