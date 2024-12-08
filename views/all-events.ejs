@@ -11,30 +11,34 @@
 </head>
 
 <body>
-    <a href="/">
-        <img src="/images/christmas-pic1.png">
-    </a>
-    <h1>Event Manager</h1>
-    <hr>
+    <header>
+        <a href="/">
+            <img src="/images/christmas-pic1.png">
+        </a>
+        <h1>Event Manager</h1>
+    </header>
 
-    <h3>All events:</h3>
-    <ul>
-        <% data.forEach(event => { %>
-            <li>
-                <strong>Event title: <%= event.title %></strong>
-                <div class="countdown" data-event-id="<%= event.id %>" data-event-date="<%= event.event_date %>">
-                    <p>Starts in: <span class="countdown-timer"></span></p>
-                </div>
-                
-                <p>Event description: <%= event.description %></p>
-                <p>Event date: <%= event.event_date %></p>
-                
-                <form action="/all-events/<%= event.id %>/delete" method="POST">
-                    <button type="submit">Delete Event</button>
-                </form>
-            </li>
-        <% }); %>
-    </ul>
+    <main>
+        <h3>All events:</h3>
+        <ul>
+            <% data.forEach(event => { %>
+                <li>
+                    <strong>Event title: <%= event.title %></strong>
+                    <div class="countdown" data-event-id="<%= event.id %>" data-event-date="<%= event.event_date %>">
+                        <p>Starts in: <span class="countdown-timer"></span></p>
+                    </div>
+                    
+                    <p>Event description: <%= event.description %></p>
+                    <p>Event date: <%= event.event_date %></p>
+                    
+                    <form action="/all-events/<%= event.id %>/delete" method="POST">
+                        <button type="submit">Delete Event</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+    </main>
+    
 </body>
 
 </html>

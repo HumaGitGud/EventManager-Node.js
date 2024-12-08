@@ -11,29 +11,32 @@
 </head>
 
 <body>
-    <a href="/">
-        <img src="/images/christmas-pic1.png">
-    </a>
-    <h1>Event Manager</h1>
-    <hr>
+    <header>
+        <a href="/">
+            <img src="/images/christmas-pic1.png">
+        </a>
+        <h1>Event Manager</h1>
+    </header>
 
-    <form id="form" method="POST" action="event">
-        <input type="text" id="einput" name="einput" placeholder="Event name"/>
-        <div id="einput-error" class="error-message"></div>
+    <main>
+        <form id="form" method="POST" action="event">
+            <input type="text" id="einput" name="einput" placeholder="Event name"/>
+            <div id="einput-error" class="error-message"></div>
+    
+            <textarea id="etext" name="etext" placeholder="Event description"></textarea>
+            <div id="etext-error" class="error-message"></div>
+    
+            <input type="datetime-local" id="etime" name="etime"/>
+            <div id="etime-error" class="error-message"></div>
+    
+            <button>Submit</button>
+            
+            <div id="all-events">
+                <a href="/all-events">View all events</a>
+            </div>
+        </form>
+    </main>
 
-        <textarea id="etext" name="etext" placeholder="Event description"></textarea>
-        <div id="etext-error" class="error-message"></div>
-
-        <input type="datetime-local" id="etime" name="etime"/>
-        <div id="etime-error" class="error-message"></div>
-
-        <button>Submit</button>
-    </form>
-    <hr>
-
-    <div id="all-events">
-        <a href="/all-events">View all events</a>
-    </div>
 </body>
 
 </html>

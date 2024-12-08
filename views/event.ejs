@@ -13,20 +13,23 @@
 </head>
 
 <body>
-    <a href="/">
-        <img src="/images/christmas-pic1.png">
-    </a>
-    <h1>Event Manager</h1>
-    <hr>
+    <header>
+        <a href="/">
+            <img src="/images/christmas-pic1.png">
+        </a>
+        <h1>Event Manager</h1>
+    </header>
 
-    <h3>Event Submitted</h3>
-    <p>Event title: <%= data.einput %></p>
-    <p>Event description: <%= data.etext %></p>
-    <p>Event date: <%= data.etime %></p>
-    
-    <div id="all-events">
-        <a href="/all-events">View all events</a>
-    </div>
+    <main>
+        <h3>Event Submitted</h3>
+        <p>Event title: <%= data.einput %></p>
+        <p>Event description: <%= data.etext %></p>
+        <p>Event date: <%= data.etime %></p>
+        
+        <div id="all-events">
+            <a href="/all-events">View all events</a>
+        </div>
+    </main>
     
     <div id="animation-container"></div>
 </body>

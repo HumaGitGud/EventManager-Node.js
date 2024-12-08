@@ -11,20 +11,20 @@ document.getElementById('form').onsubmit = (event) => {
 
     // Event name validation
     if (!document.getElementById('einput').value.trim()) {
-        document.getElementById('einput-error').innerHTML = 'Event name is required';
+        document.getElementById('einput-error').innerHTML = 'Event name is required *';
         isValid = false;
     }
 
     // Event description validation
     if (!document.getElementById('etext').value.trim()) {
-        document.getElementById('etext-error').innerHTML = 'Event description is required';
+        document.getElementById('etext-error').innerHTML = 'Event description is required *';
         isValid = false;
     }
 
     // Event time validation
     const etimeValue = document.getElementById('etime').value;
     if (!etimeValue) {
-        document.getElementById('etime-error').innerHTML = 'Event time is required';
+        document.getElementById('etime-error').innerHTML = 'Event time is required *';
         isValid = false;
     } else {
         // Validate the datetime-local format (YYYY-MM-DDTHH:MM)
