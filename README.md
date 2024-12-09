@@ -1,11 +1,12 @@
 # EventManager-Node.js
 
-A responsive web application built with Node.js, Express, and EJS, enabling users to create, view, and manage events. The app supports event submission, displays all upcoming events sorted by date, and provides options to mark events as finished or delete them.
+A responsive web application built with Node.js, Express, and EJS, enabling users to create, view, and manage events. The app supports event submission, displays all upcoming events sorted by date
+with a countdown timer, and provides option to delete events.
 
 ## Features
 - **Dynamic Event Management**: Submit events with a title, description, and date-time. View all events and manage their status dynamically.
 - **Database Integration**: Uses MariaDB for storing and retrieving event data.
-- **Responsive Design**: Optimized for both desktop and mobile devices, with a clean and user-friendly interface.
+- **Responsive Design**: Optimized for both desktop, tablet, and mobile devices, with a clean and user-friendly interface.
 - **Templating with EJS**: Dynamic rendering of event details and pages.
 - **Routing**: Three primary routes to handle home, event submission, and all-events listing.
 - **Error Handling**: Validates input on the server and client to ensure data integrity.
@@ -22,6 +23,8 @@ A responsive web application built with Node.js, Express, and EJS, enabling user
 
 2. Install dependencies:  
    `npm i express ejs mariadb dotenv`
+   Dev dependency (optional):
+   `npm i --save-dev nodemon` 
 
 3. Set up your .env file with the following variables:  
    `DB_HOST=your-database-host`  

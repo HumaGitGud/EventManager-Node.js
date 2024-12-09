@@ -1,3 +1,7 @@
+// This script creates a countdown and displays eta of every event
+// it also updates the database when the countdown reaches zero 
+// by fetching update-expired-events route in app.js
+
 document.addEventListener('DOMContentLoaded', () => {
     const countdownElements = document.querySelectorAll('.countdown');
 

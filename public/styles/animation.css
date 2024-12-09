@@ -1,3 +1,5 @@
+/* This css along with animation.js perform confetti rain animation upon clicking submit */
+
 #animation-container {
     position: fixed;
     top: 0;
