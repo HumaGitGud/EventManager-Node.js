@@ -10,5 +10,5 @@ CREATE TABLE events(
 	event_date DATETIME NOT NULL
 );
 
-INSERT INTO events (title, description, is_completed, event_date) VALUES ('Carnival', 'Renaissance masquerade', 0, '2024-12-07 20:00:00');
+INSERT INTO events (title, description, is_completed, event_date) VALUES ("New Year's", 'It is a new year!', 0, '2024-12-31 11:59:59');
 SELECT * FROM events;
